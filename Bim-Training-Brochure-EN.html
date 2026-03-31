@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BIM Corporate Training — Mahmoud Elmekawy</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy:   #0A2342;
+    --navy2:  #0D2E57;
+    --gold:   #C8922A;
+    --gold2:  #E8AA44;
+    --light:  #F4F7FB;
+    --mid:    #DEE5ED;
+    --text:   #1A2433;
+    --muted:  #5A6A7E;
+    --white:  #FFFFFF;
+    --green:  #1A7340;
+    --green-l:#E8F5EE;
+  }
+
+  body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #EEF2F7;
+    color: var(--text);
+    padding: 24px;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    background: var(--white);
+    margin: 0 auto;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    background: var(--navy);
+    padding: 36px 40px 28px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    right: -40px; top: -40px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: rgba(200,146,42,0.12);
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .badge {
+    background: var(--gold);
+    color: var(--white);
+    font-size: 10px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .header h1 {
+    color: var(--white);
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    max-width: 420px;
+  }
+  .header h1 span { color: var(--gold2); }
+  .header-sub {
+    color: #A8BDD4;
+    font-size: 12.5px;
+    margin-top: 8px;
+  }
+  .header-stats {
+    display: flex;
+    gap: 28px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .stat { text-align: center; }
+  .stat-num {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--gold2);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 10px;
+    color: #8AAAC4;
+    margin-top: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .stat-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    align-self: stretch;
+  }
+
+  /* ── BODY ── */
+  .body { padding: 32px 40px; flex: 1; }
+
+  /* ── VALUE PROP ── */
+  .value-prop {
+    background: var(--light);
+    border-left: 4px solid var(--gold);
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: var(--navy);
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  /* ── SECTION ── */
+  .section { margin-bottom: 26px; }
+  .section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--mid);
+  }
+
+  /* ── PROGRAMS GRID ── */
+  .programs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 26px;
+  }
+  .program-card {
+    border: 1px solid var(--mid);
+    border-radius: 8px;
+    padding: 14px 16px;
+    position: relative;
+    overflow: hidden;
+  }
+  .program-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--navy);
+  }
+  .program-card.highlight::before { background: var(--gold); }
+  .program-icon { font-size: 18px; margin-bottom: 6px; }
+  .program-name {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 4px;
+  }
+  .program-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+  .program-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-top: 7px;
+    background: var(--light);
+    color: var(--navy);
+  }
+  .program-card.highlight .program-tag {
+    background: #FFF3DC;
+    color: var(--gold);
+  }
+
+  /* ── TWO COL ── */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* ── CLIENTS BOX ── */
+  .clients-box {
+    background: var(--navy);
+    border-radius: 10px;
+    padding: 18px;
+    color: var(--white);
+  }
+  .clients-box .section-title { color: var(--gold2); }
+  .clients-box .section-title::after { background: rgba(255,255,255,0.15); }
+  .client-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .client-item:last-child { border-bottom: none; padding-bottom: 0; }
+  .client-dot {
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    margin-top: 4px;
+    flex-shrink: 0;
+  }
+  .client-name {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--white);
+    line-height: 1.3;
+  }
+  .client-detail {
+    font-size: 10.5px;
+    color: #8AAAC4;
+    margin-top: 1px;
+  }
+
+  /* ── DELIVERY BOX ── */
+  .delivery-box {
+    background: var(--light);
+    border-radius: 10px;
+    padding: 18px;
+  }
+  .delivery-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 0;
+    border-bottom: 1px solid var(--mid);
+    font-size: 11.5px;
+  }
+  .delivery-item:last-child { border-bottom: none; }
+  .delivery-icon { font-size: 14px; width: 20px; text-align: center; }
+  .delivery-label { font-weight: 600; color: var(--navy); }
+  .delivery-val { color: var(--muted); }
+
+  /* ── CERTS ── */
+  .certs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  .cert-badge {
+    background: var(--green-l);
+    border: 1px solid #A8D5BA;
+    color: var(--green);
+    font-size: 10.5px;
+    font-weight: 600;
+    padding: 5px 11px;
+    border-radius: 20px;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    background: var(--navy);
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-name {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--white);
+  }
+  .footer-title {
+    font-size: 10.5px;
+    color: #8AAAC4;
+    margin-top: 2px;
+  }
+  .footer-contacts {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 3px;
+  }
+  .footer-contact {
+    font-size: 11px;
+    color: var(--gold2);
+  }
+  .footer-contact span { color: #8AAAC4; margin-right: 6px; }
+  .footer-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: white; padding: 0; }
+    .page { box-shadow: none; width: 100%; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div>
+        <h1>Corporate <span>BIM Training</span><br>Programs</h1>
+        <p class="header-sub">Revit Structure · Revit Architecture · Navisworks · ISO 19650 · BEP</p>
+      </div>
+      <div class="badge">ACI Certified</div>
+    </div>
+    <div class="header-stats">
+      <div class="stat">
+        <div class="stat-num">13+</div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Workshops Delivered</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">NEOM</div>
+        <div class="stat-label">Active Project</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <div class="stat-num">AR/EN</div>
+        <div class="stat-label">Training Language</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- VALUE PROP -->
+    <div class="value-prop">
+      "I don't just teach BIM tools — I train your team to apply them on your actual projects, 
+      following your standards, solving your real challenges."
+    </div>
+
+    <!-- PROGRAMS -->
+    <div class="section-title">Training Programs</div>
+    <div class="programs">
+
+      <div class="program-card highlight">
+        <div class="program-icon">🏗️</div>
+        <div class="program-name">Revit Structure</div>
+        <div class="program-desc">From fundamentals to LOD 400 delivery. Foundations, frames, slabs, documentation & shop drawings.</div>
+        <span class="program-tag">Most Requested</span>
+      </div>
+
+      <div class="program-card">
+        <div class="program-icon">🏛️</div>
+        <div class="program-name">Revit Architecture</div>
+        <div class="program-desc">From concept through full construction documentation. Walls, roofs, interiors & drawing sets.</div>
+        <span class="program-tag">Intermediate → Advanced</span>
+      </div>
+
+      <div class="program-card">
+        <div class="program-icon">🔍</div>
+        <div class="program-name">Navisworks</div>
+        <div class="program-desc">Clash detection, model federation & coordination. Structural, MEP & civil disciplines.</div>
+        <span class="program-tag">Multi-Discipline</span>
+      </div>
+
+      <div class="program-card">
+        <div class="program-icon">📋</div>
+        <div class="program-name">ISO 19650 & BEP</div>
+        <div class="program-desc">Standards, naming conventions, CDE setup & BIM Execution Plan implementation.</div>
+        <span class="program-tag">Theory + Practical</span>
+      </div>
+
+    </div>
+
+    <!-- CLIENTS + DELIVERY -->
+    <div class="two-col">
+
+      <div class="clients-box">
+        <div class="section-title">Corporate Clients</div>
+        <div class="client-item">
+          <div class="client-dot"></div>
+          <div>
+            <div class="client-name">Dar Wa Emaar</div>
+            <div class="client-detail">Real Estate Developer · Riyadh · Onsite</div>
+          </div>
+        </div>
+        <div class="client-item">
+          <div class="client-dot"></div>
+          <div>
+            <div class="client-name">SAR — Saudi Railway</div>
+            <div class="client-detail">Organization · Online & Onsite</div>
+          </div>
+        </div>
+        <div class="client-item">
+          <div class="client-dot"></div>
+          <div>
+            <div class="client-name">Cad Masters KSA</div>
+            <div class="client-detail">Certified Training Center · Ongoing</div>
+          </div>
+        </div>
+        <div class="client-item">
+          <div class="client-dot"></div>
+          <div>
+            <div class="client-name">Engineering Firms</div>
+            <div class="client-detail">KSA & Egypt · Various programs</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="delivery-box">
+        <div class="section-title">How It Works</div>
+        <div class="delivery-item">
+          <span class="delivery-icon">📍</span>
+          <div><span class="delivery-label">Location</span><br><span class="delivery-val">Onsite (KSA) or Online</span></div>
+        </div>
+        <div class="delivery-item">
+          <span class="delivery-icon">🗣️</span>
+          <div><span class="delivery-label">Language</span><br><span class="delivery-val">Arabic, English or Bilingual</span></div>
+        </div>
+        <div class="delivery-item">
+          <span class="delivery-icon">👥</span>
+          <div><span class="delivery-label">Format</span><br><span class="delivery-val">Group sessions or individual</span></div>
+        </div>
+        <div class="delivery-item">
+          <span class="delivery-icon">🎯</span>
+          <div><span class="delivery-label">Content</span><br><span class="delivery-val">Tailored to your projects</span></div>
+        </div>
+        <div class="delivery-item">
+          <span class="delivery-icon">📜</span>
+          <div><span class="delivery-label">Certificate</span><br><span class="delivery-val">Completion certificate issued</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CERTS -->
+    <div class="section" style="margin-top:20px; margin-bottom:0;">
+      <div class="section-title">Credentials</div>
+      <div class="certs">
+        <span class="cert-badge">✓ Autodesk Certified Instructor (ACI)</span>
+        <span class="cert-badge">✓ Revit Structure Certified Professional</span>
+        <span class="cert-badge">✓ Revit Architecture Certified Professional</span>
+        <span class="cert-badge">✓ Saudi Council of Engineers — Professional</span>
+        <span class="cert-badge">✓ 13+ Years · NEOM Active</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <div class="footer-name">Mahmoud Elmekawy</div>
+      <div class="footer-title">Senior BIM Engineer · Autodesk Certified Instructor</div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-contacts">
+      <div class="footer-contact"><span>✉</span>melmekawy2020@gmail.com</div>
+      <div class="footer-contact"><span>📞</span>+966 531 175 199</div>
+      <div class="footer-contact"><span>🔗</span>linkedin.com/in/mahmoud-elmekawy</div>
+      <div class="footer-contact"><span>🎨</span>behance.net/M_Elmaghawry</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
